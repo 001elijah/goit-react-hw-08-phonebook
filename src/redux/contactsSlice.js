@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addContact, fetchContacts, removeContact } from "./contactsOperations";
+import { currentUserLogout, getCurrentUserData, login, signup } from "./authOperations";
 
 const contactsSlice = createSlice({
     name: 'contacts',
@@ -64,6 +65,18 @@ const contactsSlice = createSlice({
                 state.error = null;
                 state.items = [...state.items.filter(contact => contact.id !== payload)]; //immer under hood
             })
+            .addCase(signup.fulfilled, state => {
+                state.isLoading = false;
+            })
+            .addCase(login.fulfilled, state => {
+                state.isLoading = false;
+            })
+            .addCase(getCurrentUserData.fulfilled, state => {
+                state.isLoading = false;
+            })
+            .addCase(currentUserLogout.fulfilled, state => {
+                state.isLoading = false;
+            })
             .addMatcher(
                 action => action.type.endsWith('/pending'),
                 state => {
@@ -71,7 +84,7 @@ const contactsSlice = createSlice({
                 }
         )
             .addMatcher(
-                action => action.type.startsWith('contacts') && action.type.endsWith('/rejected'),
+                action => (action.type.startsWith('contacts') || action.type.startsWith('auth')) && action.type.endsWith('/rejected'),
                 (state, { payload }) => {
                     state.isLoading = false;
                     state.error = payload;
