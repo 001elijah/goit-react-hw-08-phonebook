@@ -3,7 +3,8 @@
     gap: 25px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #383838;
 }
 
 .Button {

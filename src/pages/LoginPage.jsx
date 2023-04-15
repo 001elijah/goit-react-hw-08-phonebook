@@ -8,12 +8,7 @@ import { login } from "redux/authOperations";
 export function LoginPage() {
   const dispatch = useDispatch();
 
-  const handleUserLogin = (formData, { setSubmitting }) => {
-    console.log('Form data:', formData);
-    setTimeout(() => {
-          alert(JSON.stringify(formData, null, 2));
-          setSubmitting(false);
-        }, 400);
+  const handleUserLogin = formData => {
     dispatch(login(formData));
   };
   return (

@@ -5,8 +5,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchContacts = createAsyncThunk("contacts/fetch",
     async (_, thunkApi) => {
+        const { token } = thunkApi.getState().authorized;
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
         try {
-            const response = await axios.get('https://64342f101c5ed06c9591510a.mockapi.io/contacts');
+            const response = await axios.get('https://connections-api.herokuapp.com/contacts');
             if (response.data.length === 0) {
                 throw new Error();
             }
@@ -27,13 +29,12 @@ export const fetchContacts = createAsyncThunk("contacts/fetch",
 export const addContact = createAsyncThunk(
     'contacts/add',
     async ({ contacts, name, number, id }, thunkApi) => {
-        const found = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase()); // винести перевірку в condition в operations
+        const found = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
         if (found) {
-            // alert(`${name} is already in contacts.`);
             return thunkApi.rejectWithValue(`${name} is already in contacts`);
         };
         try {
-            const response = await axios.post('/contacts', { name, phone: number, contactId: id });
+            const response = await axios.post('https://connections-api.herokuapp.com/contacts', { name, number });
             return response.data;
         } catch (error) {
             return thunkApi.rejectWithValue(error.message);
@@ -45,7 +46,7 @@ export const removeContact = createAsyncThunk(
     'contacts/remove',
     async (id, thunkApi) => {
         try {
-            await axios.delete(`/contacts/${id}`);
+            await axios.delete(`https://connections-api.herokuapp.com/contacts/${id}`);
             return id;
         } catch (error) {
             return thunkApi.rejectWithValue(error.message);

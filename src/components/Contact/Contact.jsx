@@ -9,7 +9,7 @@ const Contact = ({ contactProp }) => {
     const dispatch = useDispatch();
     return (
         <li className={s.Item}>
-            <span className={s.Name}>{contactProp.name}: </span><span>{contactProp.phone} </span>
+            <span className={s.Name}>{contactProp.name}: </span><span>{contactProp.number} </span>
             <button className={s.Button} type="button" onClick={() => dispatch(removeContact(contactProp.id))}>Delete</button>
         </li>
     );

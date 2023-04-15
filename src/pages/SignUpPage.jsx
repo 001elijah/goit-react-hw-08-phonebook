@@ -8,14 +8,10 @@ import { signup } from "redux/authOperations";
 export function SignUpPage() {
   const dispatch = useDispatch();
 
-  const handleUserSignup = (formData, { setSubmitting }) => {
-    console.log('Form data:', formData);
-    setTimeout(() => {
-          alert(JSON.stringify(formData, null, 2));
-          setSubmitting(false);
-        }, 400);
+  const handleUserSignup = formData => {
     dispatch(signup(formData));
   };
+  
   return (
     <AuthForm
       onSubmit={handleUserSignup}
