@@ -28,7 +28,3 @@
     align-items: center;
     gap: 5px;
 }
-
-.Item:not(:last-child) {
-    margin-bottom: 10px;
-}
