@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
 import { AuthForm } from "components/AuthForm/AuthForm";
-import { signup } from "redux/authOperations";
+import { signup } from "redux/auth/authOperations";
 
 
 

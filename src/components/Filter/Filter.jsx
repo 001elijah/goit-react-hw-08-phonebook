@@ -1,19 +1,23 @@
-import { filter as applyFilter } from 'redux/filterSlice';
+import { filter as applyFilter } from 'redux/filter/filterSlice';
 
 import s from './Filter.module.css';
 import { useDispatch } from "react-redux";
+
+import { InputLabel, TextField } from '@mui/material';
 
 const Filter = () => {
     const dispatch = useDispatch();
     return (
         <form className={s.Form}>
-            <label htmlFor="">
+            <InputLabel htmlFor="">
                 Find contacts by name<br />
-                <input type="text"
+                <TextField type="text"
                 onChange={evt => {
                     dispatch(applyFilter(evt.target.value))
-                }}/>
-            </label>
+                    }}
+                size="small"
+                />
+            </InputLabel>
         </form>
     );
 

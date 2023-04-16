@@ -1,7 +1,7 @@
 import {
     useSelector
 } from "react-redux";
-import { selectAuthorised } from "redux/authSelectors";
+import { selectAuthorised } from "redux/auth/authSelectors";
 import { List, NavItem } from "./MainNav.style";
 
 const MainNav = () => {

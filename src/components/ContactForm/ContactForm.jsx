@@ -1,11 +1,13 @@
 import shortid from "shortid";
 import { useState } from "react";
 
-import { addContact } from "redux/contactsOperations";
+import { addContact } from "redux/contacts/contactsOperations";
 
 import s from './ContactForm.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "redux/contactsSelectors";
+import { getContacts } from "redux/contacts/contactsSelectors";
+import { TextField, InputLabel } from '@mui/material';
+import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -32,9 +34,9 @@ const ContactForm = () => {
 
     return (
         <form className={s.Form} onSubmit={handleSubmit}>
-            <label htmlFor="">
+            <InputLabel htmlFor="">
                 Name:<br />
-                <input
+                <TextField
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -42,11 +44,12 @@ const ContactForm = () => {
                     required
                     value={name}
                     onChange={handleChange}
+                    size="small"
                 />
-            </label><br /><br />
-            <label htmlFor="">
+            </InputLabel><br /><br />
+            <InputLabel htmlFor="">
                 Number:<br />
-                <input
+                <TextField
                     type="tel"
                     name="number"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -54,9 +57,10 @@ const ContactForm = () => {
                     required
                     value={number}
                     onChange={handleChange}
+                    size="small"
                 />
-            </label><br /><br />
-            <button className={s.Button} type="submit">Add contact</button>
+            </InputLabel><br /><br />
+            <button className={s.Button} type="submit">Add contact <AddCircleOutlineTwoToneIcon /></button>
         </form>
     );
 };

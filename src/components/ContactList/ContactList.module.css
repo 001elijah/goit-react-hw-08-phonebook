@@ -1,4 +1,7 @@
 .List {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
     max-width: 370px;
     margin: 0 auto;
 }

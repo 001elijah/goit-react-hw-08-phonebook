@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { currentUserLogout, getCurrentUserData, login, signup } from './authOperations';
-// доробити що не розлогінювалося
 const authSlice = createSlice({
     name: 'authorized',
     initialState: {
@@ -21,7 +20,6 @@ const authSlice = createSlice({
                 state.authorized = true;
             })
             .addCase(getCurrentUserData.fulfilled, (state, { payload }) => {
-                console.log(payload);
                 state.user = payload;
                 state.authorized = true;
             })

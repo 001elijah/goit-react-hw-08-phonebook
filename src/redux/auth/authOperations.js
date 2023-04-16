@@ -64,4 +64,4 @@ export const currentUserLogout = createAsyncThunk('auth/logout',
             return thunkApi.rejectWithValue(error.message);
         }
     }
-)
+);
