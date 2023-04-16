@@ -29,6 +29,9 @@ const authSlice = createSlice({
                 state.token = null;
                 state.authorized = false;
             })
+            .addCase(getCurrentUserData.rejected, state => {
+                state.token = null;
+            })
     }
 });
 

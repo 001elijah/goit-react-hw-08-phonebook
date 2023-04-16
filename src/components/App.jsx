@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ContactPage } from 'pages/ContactPage';
 import { LoginPage } from 'pages/LoginPage';
 import { SignUpPage } from 'pages/SignUpPage';
-import { selectAuthorised } from 'redux/auth/authSelectors';
+import { selectAuthorized } from 'redux/auth/authSelectors';
 import MainNav from './MainNav/MainNav';
 import { useEffect } from 'react';
 import { getCurrentUserData } from 'redux/auth/authOperations';
@@ -12,7 +12,7 @@ import { getCurrentUserData } from 'redux/auth/authOperations';
 const App = () => {
   // const isLoading = useSelector(getIsLoading);
   // const error = useSelector(getError);
-  const authorized = useSelector(selectAuthorised);
+  const authorized = useSelector(selectAuthorized);
   const dispatch = useDispatch();
 
   useEffect(() => {

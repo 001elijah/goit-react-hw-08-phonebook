@@ -54,14 +54,17 @@ export const AuthForm = ({ onSubmit, btnSubmit, initialValues, validationSchema 
                       placeholder="Enter your password"
                     />
                  <Box textAlign="center">
-                   <Button
+                  <Button
                       variant="contained"
                       size="large"
-                 type="submit"
-                 sx={{ fontWeight: 900 }}
-                   >
-                 {btnSubmit}
-                 {btnSubmit === "Login" ? <LoginTwoToneIcon /> : <AppRegistrationTwoToneIcon />}
+                      type="submit"
+                      sx={{
+                        fontWeight: 900,
+                        backgroundColor: '#4CAF50',
+                      }}
+                  >
+                      {btnSubmit}
+                      {btnSubmit === "Login" ? <LoginTwoToneIcon /> : <AppRegistrationTwoToneIcon />}
                    </Button>
                  </Box>
              </Form>

@@ -1,14 +1,15 @@
 import {
     useSelector
 } from "react-redux";
-import { selectAuthorised } from "redux/auth/authSelectors";
+import { selectAuthorized } from "redux/auth/authSelectors";
 import { List, NavItem } from "./MainNav.style";
 
 const MainNav = () => {
-    const authorized = useSelector(selectAuthorised);
+    const authorized = useSelector(selectAuthorized);
 
   return (
     <>
+      {!authorized && <h1>☎️ Phonebook ☎️</h1>}
       {!authorized &&
       <nav>
         <List>

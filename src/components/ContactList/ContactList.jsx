@@ -5,15 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectorFilteredContacts } from "redux/contacts/contactsSelectors";
 import { useEffect } from "react";
 import { fetchContacts } from "redux/contacts/contactsOperations";
+import { selectUser } from "redux/auth/authSelectors";
 
 const ContactList = () => {
     
     const contacts = useSelector(selectorFilteredContacts);
+    const user = Boolean(useSelector(selectUser));
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchContacts());
-    }, [dispatch]);
+        user && dispatch(fetchContacts());
+    }, [dispatch, user]);
 
     return (
         <>
