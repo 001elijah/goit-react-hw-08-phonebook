@@ -45,7 +45,7 @@ const ContactForm = () => {
                             width: '100%',
                           }}
                     />
-                    {formik.errors.number && formik.touched.name && <Alert sx={{ width: '100%' }} severity="warning">{formik.errors.name}</Alert>}
+                    {formik.errors.name && formik.touched.name && <Alert sx={{ width: '100%' }} severity="warning">{formik.errors.name}</Alert>}
                     <TextField
                         size="small"
                         id="number"
