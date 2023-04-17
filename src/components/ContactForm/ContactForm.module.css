@@ -1,6 +1,6 @@
 .Form {
     display: flex;
-    gap: 25px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
     padding-bottom: 15px;

@@ -12,7 +12,7 @@ export const TextInput = ({ label, ...props }) => {
        <FormLabel sx={{ fontWeight: "bold" }} htmlFor={props.id || props.name}>{label}</FormLabel>
        <Input className="text-input" {...field} {...props} />
        {meta.touched && meta.error ? (
-         <Alert className="error" color='warning' icon='⚠️' variant='standard'>{meta.error}</Alert>
+         <Alert severity="warning">{meta.error}</Alert>
        ) : null}
      </Grid>
    );

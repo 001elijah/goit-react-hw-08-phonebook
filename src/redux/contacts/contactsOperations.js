@@ -26,8 +26,9 @@ export const fetchContacts = createAsyncThunk("contacts/fetch",
 
 export const addContact = createAsyncThunk(
     'contacts/add',
-    async ({ contacts, name, number, id }, thunkApi) => {
-        const found = contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase());
+    async ({ name, number }, thunkApi) => {
+        const { items } = thunkApi.getState().contacts;
+        const found = items.find(contact => contact.name.toLowerCase() === name.toLowerCase());
         if (found) {
             return thunkApi.rejectWithValue(`${name} is already in contacts`);
         };
