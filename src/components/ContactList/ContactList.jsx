@@ -6,6 +6,7 @@ import { selectorFilteredContacts } from "redux/contacts/contactsSelectors";
 import { useEffect } from "react";
 import { fetchContacts } from "redux/contacts/contactsOperations";
 import { selectUser } from "redux/auth/authSelectors";
+import { Alert } from "@mui/material";
 
 const ContactList = () => {
     
@@ -24,7 +25,7 @@ const ContactList = () => {
                     <ul className={s.List}>
                         {contacts.map(contact => <Contact key={contact.id} contactProp={contact} />)}
                     </ul> :
-                    <p>😤 No contacts. Add some 😤</p>
+                    <Alert variant="filled" severity="info">No contacts. Add some</Alert>
             }
         </>
     );

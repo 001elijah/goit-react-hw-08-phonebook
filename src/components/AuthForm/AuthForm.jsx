@@ -1,5 +1,5 @@
 import { Formik, Form } from "formik";
-import { Box, Button } from "@mui/material";
+import { Alert, Box, Button } from "@mui/material";
 
 import { TextInput } from "components/TextInput/TextInput";
 import { useLocation } from "react-router-dom";
@@ -54,7 +54,7 @@ export const AuthForm = ({ onSubmit, btnSubmit, initialValues, validationSchema 
                       placeholder="Enter your password"
                     />
                  <Box textAlign="center">
-               <Button
+                <Button
                       variant="contained"
                       size="large"
                       type="submit"
@@ -65,13 +65,13 @@ export const AuthForm = ({ onSubmit, btnSubmit, initialValues, validationSchema 
                   >
                       {btnSubmit}
                       {btnSubmit === "Login" ? <LoginTwoToneIcon /> : <AppRegistrationTwoToneIcon />}
-                   </Button>
+                </Button>
+                {error && error.includes('400') && btnSubmit === 'Sign up' && <Alert sx={{ mt: 2 }} variant="filled" severity="warning">User with this email already exists</Alert>}
+                {error && error.includes('400') && btnSubmit === 'Login' && <Alert sx={{ mt: 2 }} variant="filled" severity="warning">Wrong email or password</Alert>}
                  </Box>
              </Form>
            </Box>
        </Formik>
-       {error && error.includes('400') && btnSubmit === 'Sign up' && <p>😤 User with this email already exists 😤</p>}
-       {error && error.includes('400') && btnSubmit === 'Login' && <p>😤 Wrong email or password 😤</p>}
      </>
    );
  };

@@ -5,7 +5,7 @@ import Filter from "components/Filter/Filter";
 import { getError, getIsLoading } from "redux/contacts/contactsSelectors";
 import { selectAuthorized } from "redux/auth/authSelectors";
 import { UserMenu } from "components/UserMenu/UserMenu";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 
 export const ContactPage = () => {
     const isLoading = useSelector(getIsLoading);
@@ -22,8 +22,8 @@ export const ContactPage = () => {
             
             <h2>Contacts</h2>
             <Filter />
-            {isLoading && <p>Loading contacts...</p>}
-            {error && <p>😤 {error} 😤</p>}
+            {isLoading && <Alert variant="filled" severity="info" sx={{ mt: 2, mb: 2 }}>Loading contacts...</Alert>}
+            {error && <Alert variant="filled" severity="warning" sx={{ mt: 2, mb: 2 }}>{error}</Alert>}
             <ContactList/>
         </Box>
     );
