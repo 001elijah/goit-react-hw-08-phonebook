@@ -29,10 +29,15 @@
   margin-right: 10px;
 }
 
-.Button:hover,
-.Button:active {
+.Button:hover:enabled,
+.Button:active:enabled {
   cursor: pointer;
-  background-color: rgb(23, 108, 164);
+  background-color: #1565c0;
   box-shadow: none;
   transform: scale(0.95);
+}
+
+.Button:disabled {
+  background-color: #899298;
+  box-shadow: none;
 }

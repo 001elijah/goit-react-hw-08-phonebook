@@ -2,10 +2,11 @@ import { addContact } from "redux/contacts/contactsOperations";
 
 import s from './ContactForm.module.css'
 import { useDispatch } from "react-redux";
-import { TextField, Alert } from '@mui/material';
+import { TextField } from '@mui/material';
 import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import FormErrorAlert from "../FormErrorAlert/FormErrorAlert";
 
 const AddContactSchema = Yup.object().shape({
    name: Yup.string()
@@ -19,8 +20,9 @@ const AddContactSchema = Yup.object().shape({
 const ContactForm = () => {
     const formik = useFormik({
      initialValues: {
-       name: '',
-       number: '',
+        name: '',
+        number: '',
+        isSubmitting: true,
      },
      onSubmit: values => {
          dispatch(addContact(values));
@@ -45,7 +47,10 @@ const ContactForm = () => {
                             width: '100%',
                           }}
                     />
-                    {formik.errors.name && formik.touched.name && <Alert sx={{ width: '100%' }} severity="warning">{formik.errors.name}</Alert>}
+                    <FormErrorAlert
+                        fieldName={formik.errors.name}
+                        isFieldTouched={formik.touched.name}
+                    />
                     <TextField
                         size="small"
                         id="number"
@@ -58,8 +63,11 @@ const ContactForm = () => {
                             width: '100%',
                           }}
                     />
-                    {formik.errors.number && formik.touched.number && <Alert sx={{ width: '100%' }} severity="warning">{formik.errors.number}</Alert>}
-                <button className={s.Button} type="submit">Add contact <AddCircleOutlineTwoToneIcon /></button>
+                    <FormErrorAlert
+                        fieldName={formik.errors.number}
+                        isFieldTouched={formik.touched.number}
+                    />
+                <button disabled={!(formik.isValid && formik.dirty)} className={s.Button} type="submit">Add contact <AddCircleOutlineTwoToneIcon /></button>
             </form>
         </>
     );

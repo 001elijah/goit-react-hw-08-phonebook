@@ -54,7 +54,7 @@ export const AuthForm = ({ onSubmit, btnSubmit, initialValues, validationSchema 
                       placeholder="Enter your password"
                     />
                  <Box textAlign="center">
-                  <Button
+               <Button
                       variant="contained"
                       size="large"
                       type="submit"
